@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Pessoas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <button id="theme-toggle-btn" class="theme-toggle-btn" title="Alternar Tema">
+        <i class="ri-sun-line"></i>
+    </button>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="logo">
+                <i class="ri-group-line"></i>
+                <h1>Gestão de Pessoas</h1>
+            </div>
+            <p class="subtitle">Gerencie os cadastros de forma simples e elegante</p>
+        </header>
+
+        <main class="main-content">
+            <section class="glass-panel form-section">
+                <h2 id="form-title">Nova Pessoa</h2>
+                <form id="pessoa-form">
+                    <input type="hidden" id="pessoa-id">
+                    
+                    <div class="form-group">
+                        <label for="nome">Nome Completo *</label>
+                        <div class="input-wrapper">
+                            <i class="ri-user-3-line"></i>
+                            <input type="text" id="nome" required placeholder="Ex: João da Silva">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nascimento">Data de Nascimento (DD/MM/AAAA) *</label>
+                        <div class="input-wrapper">
+                            <i class="ri-calendar-line"></i>
+                            <input type="text" id="nascimento" required placeholder="DD/MM/AAAA" pattern="\d{2}/\d{2}/\d{4}" maxlength="10" inputmode="numeric">
+                        </div>
+                        <small>Use o formato britânico DD/MM/AAAA</small>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="pai">Nome do Pai</label>
+                            <div class="input-wrapper">
+                                <i class="ri-parent-line"></i>
+                                <input type="text" id="pai" placeholder="Opcional">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="mae">Nome da Mãe</label>
+                            <div class="input-wrapper">
+                                <i class="ri-parent-fill"></i>
+                                <input type="text" id="mae" placeholder="Opcional">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">E-mail *</label>
+                        <div class="input-wrapper">
+                            <i class="ri-mail-line"></i>
+                            <input type="email" id="email" required placeholder="joao@exemplo.com">
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="btn-cancelar" style="display: none;">Cancelar</button>
+                        <button type="submit" class="btn btn-primary" id="btn-salvar">
+                            <i class="ri-save-line"></i> Salvar Cadastro
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="glass-panel list-section">
+                <div class="list-header">
+                    <h2>Pessoas Cadastradas</h2>
+                    <div class="search-bar">
+                        <i class="ri-search-line"></i>
+                        <input type="text" id="search-input" placeholder="Buscar por nome...">
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table id="pessoas-table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Nascimento</th>
+                                <th>E-mail</th>
+                                <th>Pai</th>
+                                <th>Mãe</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pessoas-tbody">
+                            <tr>
+                                <td colspan="6" class="loading-cell">
+                                    <div class="loader"></div>
+                                    Carregando dados...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="toast-container" class="toast-container"></div>
+
+    <script type="module" src="main.js"></script>
+</body>
+</html>
